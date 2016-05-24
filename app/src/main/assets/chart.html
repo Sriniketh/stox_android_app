@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<head>
+    <!--js-->
+    <script src="js/jquery-2.2.2.min.js" crossorigin="anonymous"></script>
+
+    <!--high charts-->
+    <script type="text/javascript" src="js/highstock.js"></script>
+    <script type="text/javascript" src="js/exporting.js"></script>
+    <script>
+                $(function() {
+                    var parameters = location.search;
+                    parameters = parameters.substring(parameters.indexOf("=")+1);
+                    var company_name = parameters.substring(0, parameters.indexOf("&"));
+                    var return_data = parameters.substring(parameters.indexOf("&d=") + 3);
+                                    var input = JSON.parse(return_data);
+                                    if(jQuery.isEmptyObject(input)){
+                                        document.write("<p>Chart data unavailable</p>");
+                                    }
+                                    else{
+                                    var group = [
+                                        ['week', [1]],
+                                        ['month', [1, 2, 3, 4, 6]]
+                                    ];
+                                    $("#highstock_chart").highcharts('StockChart', {
+                                        rangeSelector: {
+                                            allButtonsEnabled: true,
+                                            selected: 0,
+                                            inputEnabled: false,
+                                            buttons: [{
+                                                type: 'week',
+                                                count: 1,
+                                                text: '1w'
+                                            }, {
+                                                type: 'month',
+                                                count: 1,
+                                                text: '1m'
+                                            }, {
+                                                type: 'month',
+                                                count: 3,
+                                                text: '3m'
+                                            }, {
+                                                type: 'month',
+                                                count: 6,
+                                                text: '6m'
+                                            }, {
+                                                type: 'ytd',
+                                                text: 'YTD'
+                                            }, {
+                                                type: 'year',
+                                                count: 1,
+                                                text: '1y'
+                                            }, {
+                                                type: 'all',
+                                                text: 'All'
+                                            }]
+                                        },
+
+                                        chart: {
+                                            reflow: true
+                                        },
+
+                                        navigation: {
+                                            buttonOptions: {
+                                                enabled: false
+                                            }
+                                        },
+
+                                        tooltip: {
+                                            valuePrefix: '$'
+                                        },
+
+                                        title: {
+                                            text: company_name + ' Stock Price'
+                                        },
+
+                                        yAxis: [{
+                                            title: {
+                                                text: "Stock Value"
+                                            }
+                                        }],
+
+                                        series: [{
+                                            name: company_name,
+                                            data: input,
+                                            dataGrouping: {
+                                                units: group
+                                            },
+                                            type: 'area',
+                                            tooltip: {
+                                                valueDecimals: 2
+                                            },
+                                            fillColor: {
+                                                linearGradient: {
+                                                    x1: 0,
+                                                    y1: 0,
+                                                    x2: 0,
+                                                    y2: 1
+                                                },
+                                                stops: [
+                                                    [0, Highcharts.getOptions().colors[0]],
+                                                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                                ]
+                                            }
+                                        }],
+
+                                        credits: {
+                                            enabled: true
+                                        }
+                                    });
+                                    }
+
+                });
+
+    </script>
+</head>
+<body>
+<div id="highstock_chart">
+</div>
+</body>

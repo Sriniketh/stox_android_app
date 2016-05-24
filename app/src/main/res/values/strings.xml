@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Stox</string>
+    <string name="activity_heading_1">Stock Name/Symbol</string>
+    <string name="autocomplete_hint">Apple Inc. or AAPL</string>
+    <string name="get_quote">Get Quote</string>
+    <string name="clear">Clear</string>
+    <string name="activity_heading_2">Favourites</string>
+    <string name="automatic_refresh_text">Auto Refresh</string>
+    <string name="news_fragment_heading">News Feed</string>
+    <string name="stock_chart_heading">Today\'s Stock Activity</string>
+    <string name="action_favorite">Add to favourites</string>
+    <string name="action_favorite_added">Added to favourites</string>
+    <string name="action_facebook">Share on Facebook</string>
+    <string name="facebook_app_id">476459229226391</string>
+    <string name="current_fragment_heading">Stock Details</string>
+
+</resources>

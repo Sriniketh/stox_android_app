@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="lights.northern.sriniketh.stox.MainActivity">
+
+    <TextView
+        android:id="@+id/activity_heading_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_heading_1"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/autocompleteViewLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_heading_1">
+
+        <lights.northern.sriniketh.stox.CustomAutoCompleteView
+            android:id="@+id/autocompleteView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:completionThreshold="3" />
+
+        <ProgressBar
+            android:id="@+id/autocomplete_progress"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/autocompleteView"
+            android:layout_alignRight="@+id/autocompleteView"
+            android:layout_alignTop="@+id/autocompleteView"
+            android:paddingRight="5dp"
+            android:visibility="invisible" />
+
+        <ProgressBar
+            android:id="@+id/download_progress"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/autocompleteView"
+            android:layout_alignRight="@+id/autocompleteView"
+            android:layout_alignTop="@+id/autocompleteView"
+            android:paddingRight="5dp"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/get_quote_clear_buttons_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/autocompleteViewLayout"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/clear" />
+
+        <Button
+            android:id="@+id/get_quote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/get_quote" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/activity_heading_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/automatic_refresh_text"
+        android:layout_alignParentStart="true"
+        android:text="@string/activity_heading_2"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/automatic_refresh_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/get_quote_clear_buttons_ll"
+        android:layout_marginTop="18dp"
+        android:layout_toLeftOf="@+id/auto_refresh_switch"
+        android:text="@string/automatic_refresh_text"
+        android:textColor="@android:color/black" />
+
+    <Switch
+        android:id="@+id/auto_refresh_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/get_quote_clear_buttons_ll"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="14dp"
+        android:layout_toLeftOf="@+id/refresh_button" />
+
+    <ImageView
+        android:id="@+id/refresh_button"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/get_quote_clear_buttons_ll"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_refresh_black_24dp" />
+
+    <com.nhaarman.listviewanimations.itemmanipulation.DynamicListView
+        android:id="@+id/favourites_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/refresh_button"
+        android:divider="@null"
+        android:paddingTop="10dp" />
+
+    <ProgressBar
+        android:id="@+id/refresh_progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
+</RelativeLayout>
+
